@@ -1,0 +1,73 @@
+//アドベンチャーゲーム
+#include <cstdalign>
+#include <ctime>
+#include <iostream>
+
+using namespace std;
+
+int main() {
+  srand(static_cast<unsigned int>(time(0)));
+  // seed random number generator
+
+  int choice;
+  // playerの選択
+
+  // int enemy = (randomNumber % 2) + 1;
+  // 1~5の間の数字を取得
+
+  int level = 1;
+  // 敵のレベル
+
+  int enemyLevel = 2;
+  // 敵のレベル(数字の範囲)
+
+  int count = 0;
+  // 敵に勝った回数
+
+  cout << "\t5体の敵を倒そう！\n\n";
+  cout << "敵の数字を当てれれば倒せるよ！\n\n";
+
+  int enemyRange = 2;
+  // 敵の攻撃範囲
+
+  for (enemyRange = 2; enemyLevel < 7; ++enemyLevel) {
+    cout << "敵レベル" << level << ": "
+         << "1 ~ " << enemyLevel << "！\n\n";
+    cin >> choice;
+
+    int randomNumber = rand();
+    // 乱数設定
+
+    ++level;
+
+    ++enemyRange;
+
+    int enemy = (randomNumber % enemyRange) + 1;
+    //敵の攻撃範囲を決める
+
+    if (choice < enemy) {
+      cout << "敵に負けてしまった...\n\n";
+
+    } else if (choice > enemy) {
+      cout << "敵に負けてしまった...\n\n";
+
+    } else {
+      cout << "敵を倒した！\n\n";
+      ++count;
+    }
+    if (enemyLevel == 6) {
+      cout << "合計で敵を " << count << "体 倒した！" << endl;
+      if (count <= 2) {
+        cout << "まだまだだな～" << endl;
+      } else if (count <= 4) {
+        cout << "強いね..." << endl;
+      } else if (count <= 5) {
+        cout << "運も実力のうちさ" << endl;
+      } else {
+        cout << "だめだね..." << endl;
+      }
+    }
+  }
+
+  return 0;
+}
